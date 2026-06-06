@@ -2,6 +2,7 @@
   "tasks": {
     "dev": "deno run -A --watch --unstable-kv main.ts",
     "start": "deno run -A --unstable-kv main.ts",
+    "build": "echo 'No build step needed for Fresh'",
     "fmt": "deno fmt",
     "lint": "deno lint",
     "test": "deno test -A"
