@@ -2,6 +2,12 @@
 import { getUserByEmail, getUserById, createUser } from "./db.ts";
 import type { User } from "../types.ts";
 
+// Extend globalThis to include sessions
+declare global {
+  // eslint-disable-next-line no-var
+  var sessions: Map<string, { userId: string; expiresAt: number }> | undefined;
+}
+
 // Simple UUID generator
 function generateId(): string {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
@@ -25,10 +31,10 @@ const SESSION_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 // Use globalThis to ensure sessions persist across module reloads
 if (!globalThis.sessions) {
-  (globalThis as any).sessions = new Map<string, { userId: string; expiresAt: number }>();
+  globalThis.sessions = new Map<string, { userId: string; expiresAt: number }>();
 }
 
-const sessions = (globalThis as any).sessions as Map<string, { userId: string; expiresAt: number }>;
+const sessions = globalThis.sessions as Map<string, { userId: string; expiresAt: number }>;
 
 export async function registerUser(
   email: string,

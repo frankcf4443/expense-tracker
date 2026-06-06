@@ -56,7 +56,7 @@ export default function ExpenseForm(props: ExpenseFormProps) {
       setNotes("");
 
       // Emit custom event for other components to listen
-      window.dispatchEvent(new CustomEvent("expense-added"));
+      globalThis.dispatchEvent(new CustomEvent("expense-added"));
 
       // Notify parent component
       props.onExpenseAdded?.();

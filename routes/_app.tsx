@@ -1,4 +1,3 @@
-import { App } from "fresh/server.ts";
 import { Head } from "fresh/src/runtime/head.ts";
 
 export default function App(props: { url: string; }) {

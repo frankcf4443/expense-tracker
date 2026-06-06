@@ -1,8 +1,7 @@
-import { defineRoute } from "$fresh/server.ts";
 import { deleteSession } from "../lib/auth.ts";
 
 export const handler = {
-  async GET(req) {
+  GET(req) {
     const cookieHeader = req.headers.get("Cookie");
     if (cookieHeader) {
       const cookies = cookieHeader.split(";").map(c => c.trim());

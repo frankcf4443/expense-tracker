@@ -17,6 +17,7 @@
     "gfm": "https://deno.land/x/gfm@0.2.4/mod.ts"
   },
   "lint": {
+    "exclude": ["test-*.ts", "*.test.ts"],
     "rules": {
       "tags": ["recommended"]
     }

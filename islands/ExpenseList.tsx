@@ -31,10 +31,10 @@ export default function ExpenseList(props: ExpenseListProps) {
       loadExpenses();
     };
 
-    window.addEventListener("expense-added", handleExpenseAdded);
+    globalThis.addEventListener("expense-added", handleExpenseAdded);
 
     return () => {
-      window.removeEventListener("expense-added", handleExpenseAdded);
+      globalThis.removeEventListener("expense-added", handleExpenseAdded);
     };
   }, []);
 
@@ -169,6 +169,7 @@ export default function ExpenseList(props: ExpenseListProps) {
                   {formatCurrency(expense.amount)}
                 </span>
                 <button
+                  type="button"
                   onClick={() => handleDelete(expense.id)}
                   disabled={deleteId === expense.id}
                   class="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"

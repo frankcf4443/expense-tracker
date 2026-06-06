@@ -131,7 +131,7 @@ export const handler: Handlers = {
     try {
       await deleteExpense(user.id, expenseId);
       return new Response(null, { status: 204 });
-    } catch (error) {
+    } catch (_error) {
       return new Response(
         JSON.stringify({ error: "Failed to delete expense" }),
         { status: 400 }
@@ -166,7 +166,7 @@ export const handler: Handlers = {
       return new Response(JSON.stringify(expense), {
         headers: { "Content-Type": "application/json" },
       });
-    } catch (error) {
+    } catch (_error) {
       return new Response(
         JSON.stringify({ error: "Failed to update expense" }),
         { status: 400 }

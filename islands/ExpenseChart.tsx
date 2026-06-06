@@ -45,10 +45,10 @@ export default function ExpenseChart() {
       loadAnalytics();
     };
 
-    window.addEventListener("expense-added", handleExpenseAdded);
+    globalThis.addEventListener("expense-added", handleExpenseAdded);
 
     return () => {
-      window.removeEventListener("expense-added", handleExpenseAdded);
+      globalThis.removeEventListener("expense-added", handleExpenseAdded);
     };
   }, []);
 
